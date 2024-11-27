@@ -37,9 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
         history.back();
     };
 
+    const closePopup2 = () => {
+        popup.style.display = "none";
+        history.back();
+    };
+
     // Open/Close popup
     openFormBtn.addEventListener("click", showPopup);
-    closeFormBtn.addEventListener("click", closePopup);
+    closeFormBtn.addEventListener("click", closePopup2);
 
     // History handling
     window.addEventListener("popstate", (event) => {
