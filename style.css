@@ -31,11 +31,15 @@ body {
 }
 
 .close-btn {
-    position: absolute;
+    position: flex;
     top: 10px;
     right: 10px;
     background: none;
     border: none;
     font-size: 20px;
     cursor: pointer;
+}
+
+.cl-btn{
+    padding-left: 95%;
 }
