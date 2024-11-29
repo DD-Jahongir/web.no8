@@ -29,12 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const showPopup = () => {
         popup.style.display = "flex";
-        history.pushState({ popup: true }, "", "#feedback-form");
+        history.pushState({ popupOpen: true }, "", "#feedback-form");
     };
 
     const closePopup = () => {
         popup.style.display = "none";
-        history.replaceState({ popup: false }, "", "");
+        history.replaceState({ popupOpen: false }, "", "");
     };
 
     // Open/Close popup
@@ -43,10 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // History handling
     window.addEventListener("popstate", (event) => {
-        if (!event.state?.popupOpen) {
-            closePopup();
-        } else {
+        if (event.state?.popupOpen) {
             showPopup();
+        } else {
+            closePopup();
         }
     });
 
