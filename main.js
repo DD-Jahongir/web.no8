@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         saveFormData();
         try {
             const formData = new FormData(feedbackForm);
-            const response = await fetch("https://formcarry.com/s/your-form-endpoint", {
+            const response = await fetch("https://formcarry.com/s/mqCekS9aUwB", {
                 method: "POST",
                 body: formData,
             });
