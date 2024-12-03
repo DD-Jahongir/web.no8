@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         saveFormData();
         try {
             const formData = new FormData(feedbackForm);
-            fetch("https://formcarry.com/s/ER8Y_VGHGBL", {
+            fetch("https://formcarry.com/s/Kh7rs25F4vQ", {
                 method: "POST",
                 headers:{'Content-Type': 'appication/json','Accept' : 'appication/json},
                 body: JSON.stringfy(Object/formEntries(formData.entries())),
