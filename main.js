@@ -56,11 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
         saveFormData();
         try {
             const formData = new FormData(feedbackForm);
-            const response = await fetch("https://formcarry.com/s/ER8Y_VGHGBL", {
+            fetch("https://formcarry.com/s/ER8Y_VGHGBL", {
                 method: "POST",
-                body: formData,
+                headers:{'Content-Type': 'appication/json','Accept' : 'appication/json},
+                body: JSON.stringfy(Object/formEntries(formData.entries())),
             });
-
+        .then(response =>{
             if (response.ok) {
                 closePopup();
                 clearFormData();
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
             responseMessage.textContent = error.message;
             responseMessage.style.color = "red";
         }
+        });
     });
 
     // Restore form data
