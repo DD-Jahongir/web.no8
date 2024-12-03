@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch("https://formcarry.com/s/Kh7rs25F4vQ", {
                 method: "POST",
                 headers:{'Content-Type': 'appication/json','Accept' : 'appication/json},
-                body: JSON.stringfy(Object/formEntries(formData.entries())),
+                body: JSON.stringfy(Object.fromEntries(formData.entries()))
             });
             if (response.ok) {
                 closePopup();
