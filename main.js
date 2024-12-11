@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeFormBtn = document.getElementById("closeFormBtn");
     const feedbackForm = document.getElementById("feedbackForm");
     const responseMessage = document.getElementById("responseMessage");
+    const name = document.getElementById("name");
+    const phone = document.getElementById("phone");
+    const email = document.getElementById("email");
+    const organization = document.getElementById("organization");
+    const message = document.getElementById("message");
 
     // LocalStorage data restoration
     const restoreFormData = () => {
@@ -55,19 +60,27 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         saveFormData();
         try {
-            const formData = new FormData(feedbackForm);
-            fetch("https://formcarry.com/s/Kh7rs25F4vQ", {
-                method: "POST",
-                headers:{'Content-Type': 'appication/json','Accept' : 'appication/json},
-                body: JSON.stringfy(Object.fromEntries(formData.entries()))
-            });
-            if (response.ok) {
+            const response = await fetch(
+                `https://api.telegram.org/bot6377527142:AAEq1-iY3iR75wPWyTPV2ByHX7ivfHHrJhc/sendMessage`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    chat_id: 1960788585, // Замените на ID чата админа
+                    text: `Новая заявка:\nИмя: ${name} \nemail: ${email}\nТелефон: ${phone}\nСообщение: ${message} \nОрганизация: ${organization} }`,
+                  }),
+                }
+              );
+            
+              if (response.ok) {
                 closePopup();
                 clearFormData();
                 alert("Форма успешно отправлена!");
-            } else {
-                throw new Error("Ошибка при отправке формы");
-            }
+              }else{
+                throw new Error("Ошибка отправки сообщения в Telegram");
+              }
         } catch (error) {
             responseMessage.textContent = error.message;
             responseMessage.style.color = "red";
